@@ -1,0 +1,17 @@
+# Analyse Influx de la réaction d acide glutamique en valine ( Données issus article : Sink/Source Balance of Leaves Influences Amino Acid Pools and Their Associated Metabolic Fluxes in Winter Oilseed Rape (Brassica napus L.))
+
+# Modification des fichiers entrées préfixe Valine 
+# NEWT : écrire la réaction 
+# MISO : modification Specie (molécule arrive)	Fragment (nombre atomes suivi)	Dataset (MS)	Isospecies (M0 ou M1)	Value (tables)	SD	Time ( ID et comment ne sont pas à préciser )
+# LINP : modification Metabolite (molécule départ)	Isotopomer	Value	Comment ( ID n est pas à preciser ) 
+# OPT : modification Name	Value ( ID et comment ne sont pas à préciser )
+# TVAR : modification Name	Kind	Type (F = free , C = contraint , D = dependant)	Value
+
+# Modification de la table S3 pour avoir M0 ( 1 - M1) et M1 
+# Tableau avec tabulation .tsv qui est lu par un fichier R pour que LINP fonctionne 
+
+influx_i.py --prefix Valine
+
+# Obtention pdf pour visualiser le resultat et dossier TMP ( ex : Valine_res ) 
+# KVH : linéar stat et f.n. qui nous indique la valeur du flux à comparer avec scala 
+                                                                
