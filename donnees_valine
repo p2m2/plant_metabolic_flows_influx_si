@@ -13,5 +13,9 @@
 influx_i.py --prefix Valine
 
 # Obtention pdf pour visualiser le resultat et dossier TMP ( ex : Valine_res ) 
-# KVH : linéar stat et f.n. qui nous indique la valeur du flux à comparer avec scala 
+# KVH : linéar stat et f.n. qui nous indique la valeur du flux à comparer avec scala
+
+# Pour les feuilles 15 on arrive à avoir des résultats similaires de ceux de l article ( 17 et 19 nmol/g DW min-1).
+# Pour les feuilles 11 nous n'avons pas de valeurs cohérentes, nous supposons que cela est du au points (4 en fonctions du temps 0 , 30 , 60 , 120) et au faite que l'enrichissment ne se fasse pas assez vite.
+# Pour avoir des résultats plus cohérents il faudrait prendre en compte le faite qu on est dans des cellules eucaryotes avec plusieurs compartiments.
                                                                 
