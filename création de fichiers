@@ -22,3 +22,14 @@ donnes_glu_val <- donnees_lab %>%
 donnes_glu_val <- donnes_glu_val[, c("ID" , "Comments" , "Specie", "Fragments", "Dataset" , "Isospecies" , "Value" , "SD" , "time" )]
 # Organisation des colonnes conforme au fichier puis création du fichier
 write.table(donnes_glu_val, file="Valine.miso", sep="\t") 
+
+# #GLUVAL interpolation lineaire.tsv  
+
+donnees_glu_val_i <- donnees_lab %>%
+  select(time , starts_with("Glu"))
+# Sélection des colonnes d interets
+
+colnames(donnees_glu_val_i) <- c("Time", "M1", "M0")
+donnees_glu_val_i <- donnees_glu_val_i[, c("Time", "M0", "M1"  )]
+# Organisation des colonnes conforme au fichier puis création du fichier
+write.table(donnes_glu_val, file="Valine.tsv", sep="\t")
