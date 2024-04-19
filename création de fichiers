@@ -15,7 +15,7 @@ donnes_glu_val <- donnees_lab %>%
   select(time , starts_with("Val"))%>%
   pivot_longer(cols = c("Val_M1" , "Val_M0") , names_to = "Species_Isospecies" , values_to = "Value") %>%
   separate ( col = "Species_Isospecies" , into = c("Specie" , "Isospecies" ) , sep = "_") %>%
-  mutate ( ID = "", Comments = "" , Fragments = 1 , Dataset = "MS-1" , SD = max(donnes_glu_val$Value , donnes_glu_val$Specie != "M0")/10)
+  mutate ( ID = "", Comments = "" , Fragments = 1 , Dataset = "MS-1" , SD = max(Value , Specie != "M0")/10)
 # Sélection des colonnes d'interet dans notre cas la valine et le temps. Transformation des colonnes M1 et M0 en lignes. 
 # Creation de colonnes soit a partir d existante soit avec une valeur qui est défini selon l'expérience 
 
@@ -32,4 +32,4 @@ donnees_glu_val_i <- donnees_lab %>%
 colnames(donnees_glu_val_i) <- c("Time", "M1", "M0")
 donnees_glu_val_i <- donnees_glu_val_i[, c("Time", "M0", "M1"  )]
 # Organisation des colonnes conforme au fichier puis création du fichier
-write.table(donnes_glu_val, file="Valine.tsv", sep="\t")
+write.table(donnees_glu_val_i, file="Valine.tsv", sep="\t")
