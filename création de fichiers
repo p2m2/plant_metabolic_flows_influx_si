@@ -3,11 +3,20 @@
 library("readxl") # Package permettant de lire les excels 
 library("tidyr") # Package permettant d'acceder à dplyr
 library ("dplyr") # Package permettant de remanier le jeu de données 
-library(plyr)
+# Ne surtout pas installer plyr, inactivaction de certaines fonction de dyplr comme group by 
+#detach(package:plyr) # si plyr est charger 
 
 # Chargement des tableaux 
 donnees_lab <- read_excel ("Scalaflux_labelling.xlsx") # tableau avec M0 et M1
 donnees_poo <- read_excel ("Scalaflux_poolsize.xlsx") " tableau avec les pools size
+
+# Pour remplir le METAB du fichier tvar on calcul des moyennes 
+
+moyenne <- donnees_poo %>%
+  group_by(leaf , rep ) %>%
+  summarise(moyenne = mean(Threonine))  
+# moyenne
+write.table(moyenne, file="Moyenne", sep="\t" , row.names = FALSE , quote = FALSE) 
 
 #GLUVAL miso 
 
@@ -43,7 +52,7 @@ donnes_glu_val <- donnees_lab %>%
   select(time , starts_with("Val"))%>%
   pivot_longer(cols = c("Val_M1" , "Val_M0") , names_to = "Species_Isospecies" , values_to = "Value") %>%
   separate ( col = "Species_Isospecies" , into = c("Specie" , "Isospecies" ) , sep = "_") %>%
-  mutate ( ID = "", Comments = "" , Fragment = 1 , Dataset = "MS-1" , SD = max(donnes_glu_val[donnes_glu_val$Isospecies!="M0",]$Value)/10) %>%
+  mutate ( ID = "", Comments = "" , Fragment = 1 , Dataset = "MS-1" , SD = 0.01) %>%
   arrange (time , Isospecies)
 donnes_glu_val <- donnes_glu_val[, c("ID" , "Comments" , "Specie", "Fragment", "Dataset" , "Isospecies" , "Value" , "SD" , "time" )]
 colnames(donnes_glu_val) <- c("ID" , "Comments" , "Specie", "Fragment", "Dataset" , "Isospecies" , "Value" , "SD" ,"Time")
