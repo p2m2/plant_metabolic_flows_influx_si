@@ -4,7 +4,7 @@ library("readxl") # Package permettant de lire les excels
 library("tidyr") # Package permettant d'acceder à dplyr
 library ("dplyr") # Package permettant de remanier le jeu de données 
 # Ne surtout pas installer plyr, inactivaction de certaines fonction de dyplr comme group by 
-#detach(package:plyr) # si plyr est charger 
+#detach(package:plyr) # si plyr est chargé
 
 # Chargement des tableaux 
 donnees_lab <- read_excel ("Scalaflux_labelling.xlsx") # tableau avec M0 et M1
