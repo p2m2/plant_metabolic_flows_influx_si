@@ -4,7 +4,7 @@ C’est un logiciel qui permet de modéliser des flux métaboliques instationnai
 
 
 
-# Installation:
+## Installation:
 Il faut tout d’abord créer un nouvel environnement, afin d’isoler et d’assurer une fiabilité au résultat. Pour se faire on utilise conda qui est un gestionnaire d'environnements et de packages:
 conda create --name FLUX
 On installe ce logiciel sur l'environnement qu’on vient de créer : 
@@ -13,7 +13,7 @@ On s’assure du bon fonctionnement du logiciel en effectuant les tests proposé
 
 
 
-# Fichiers d’entrées:
+## Fichiers d’entrées:
 Pour fonctionner, le logiciel a besoin de plusieurs fichiers d’entrées. Ces fichiers doivent avoir le même préfixe mais aussi ces fichiers possèdent des nomenclatures spécifiques (tabulations et espaces) ,  Si ID et Comment sont vides mettre une tabulation, :
 
 - .netw : ou network permet d’indiquer au logiciel les voies à modéliser. Le nombre d’atome suivi doit être équilibré.
