@@ -1,22 +1,22 @@
 # Modélisation des flux métaboliques chez les végétaux avec Influx
 
-#C’est un logiciel qui permet de modéliser des flux métaboliques instationnaires.
+C’est un logiciel qui permet de modéliser des flux métaboliques instationnaires.
 
 
 
 # Installation:
-#Il faut tout d’abord créer un nouvel environnement, afin d’isoler et d’assurer une fiabilité au résultat. Pour se faire on utilise conda qui est un gestionnaire d'environnements et de packages:
+Il faut tout d’abord créer un nouvel environnement, afin d’isoler et d’assurer une fiabilité au résultat. Pour se faire on utilise conda qui est un gestionnaire d'environnements et de packages:
 conda create --name FLUX
-#On installe ce logiciel sur l'environnement qu’on vient de créer : 
+On installe ce logiciel sur l'environnement qu’on vient de créer : 
 conda install influx_si -c conda-forge -c bioconda
-#On s’assure du bon fonctionnement du logiciel en effectuant les tests proposés, ces tests sont des données issues de l’article https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8021400/. Le logiciel est composé de deux branches influx_s pour les flux stationnaires et influx_i des flux instationnaires. Nous n'utiliserons et détaillerons que influx_i. 
+On s’assure du bon fonctionnement du logiciel en effectuant les tests proposés, ces tests sont des données issues de l’article https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8021400/. Le logiciel est composé de deux branches influx_s pour les flux stationnaires et influx_i des flux instationnaires. Nous n'utiliserons et détaillerons que influx_i. 
 
 
 
 # Fichiers d’entrées:
-#Pour fonctionner, le logiciel a besoin de plusieurs fichiers d’entrées. Ces fichiers doivent avoir le même préfixe mais aussi ces fichiers possèdent des nomenclatures spécifiques (tabulations et espaces) ,  Si ID et Comment sont vides mettre une tabulation, :
+Pour fonctionner, le logiciel a besoin de plusieurs fichiers d’entrées. Ces fichiers doivent avoir le même préfixe mais aussi ces fichiers possèdent des nomenclatures spécifiques (tabulations et espaces) ,  Si ID et Comment sont vides mettre une tabulation, :
 
-# .netw : ou network permet d’indiquer au logiciel les voies à modéliser. Le nombre d’atome suivi doit être équilibré.
+- .netw : ou network permet d’indiquer au logiciel les voies à modéliser. Le nombre d’atome suivi doit être équilibré.
 #nom_flux:(tab)métabolite_entrée (atome_suivi) -> métabolite_sortie (atome_suivi)
 
 # .miso : ou mesures permet d’indiquer les mesures des métabolites de transitions ou de sorties. Species est le métabolite de sortie, Fragment est le nombre d’atome suivi, Dataset est issue de la même analyse de spectrométrie de masse, Isospecies est l’isotopomère, et SD est le pourcentage d’erreur autoriser 
