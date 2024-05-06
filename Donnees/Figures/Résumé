@@ -3,6 +3,10 @@ Pour compléter l'installation et la prise en main du logiciel, nous avons réal
 Nous avons reproduit les flux du Glutamate vers la Valine et de l'Aspartate vers la Thréonine. Pour obtenir ces flux, nous avons fait varier certains paramètres tels 
 que la valeur de SD (écart-type) du fichier .miso et la valeur de subdt du fichier .opt.
 
+La mesure de SD permet de moduler le pourcentage d'erreurs de modélisation du flux. Par exemple, un subdt à -2 permet un pourcentage d'erreur de 1% et un SD à -1 
+signifie un pourcentage d'erreurs à 10%. Cela signifie que la modélisation doit se situer dans un écart de 1%, contraignant ainsi le logiciel à modéliser autour des 
+valeurs.
+
 L'impact de la valeur de SD est important sur le fonctionnement du logiciel. Sur les feuilles 15 qui ont un fort enrichissement, toutes les variations de SD avec un 
 subdt de 1 ou 10 donnent un résultat. Pour les feuilles 11 qui ont un enrichissement plus faible, la variation de SD avec un subdt à 1 donne des valeurs de flux, sans 
 qu'il n'y ait de valeur de SD commune à toutes les répétitions, et la variation de SD avec un subdt à 10 donne un résultat de flux uniquement pour la répétition B. 
