@@ -1,0 +1,21 @@
+Pour compléter l'installation et la prise en main du logiciel, nous avons réalisé des tests sur les données de l'article https://www.mdpi.com/2218-1989/10/4/150.
+
+Nous avons reproduit les flux du Glutamate vers la Valine et de l'Aspartate vers la Thréonine. Pour obtenir ces flux, nous avons fait varier certains paramètres tels 
+que la valeur de SD (écart-type) du fichier .miso et la valeur de subdt du fichier .opt.
+
+L'impact de la valeur de SD est important sur le fonctionnement du logiciel. Sur les feuilles 15 qui ont un fort enrichissement, toutes les variations de SD avec un 
+subdt de 1 ou 10 donnent un résultat. Pour les feuilles 11 qui ont un enrichissement plus faible, la variation de SD avec un subdt à 1 donne des valeurs de flux, sans 
+qu'il n'y ait de valeur de SD commune à toutes les répétitions, et la variation de SD avec un subdt à 10 donne un résultat de flux uniquement pour la répétition B. 
+Pour les feuilles 7 qui ont un enrichissement faible, la variation de SD avec un subdt à 1 donne les valeurs de flux pour les répétitions B et C, tandis qu'avec un 
+subdt à 10, il y a une valeur de flux pour la répétition B. Enfin, pour les feuilles 3 qui ont un enrichissement très faible, la variation de SD avec un subdt de 10 
+donne les valeurs de flux pour les répétitions A et B, tandis qu'avec un subdt de 1, on obtient la valeur de flux pour la répétition C.
+
+La mesure de subdt permet de déterminer le nombre de subdivisions que l'on souhaite observer entre deux points. Dans nos valeurs, entre 0 et 30, 30 et 60, 60 et 120, 
+si le subdt est à 10, nous ajoutons 10 points entre ces valeurs.
+
+Pour comparer l'impact du nombre de subdivisions sur les valeurs de flux, nous avons effectué le test sur la feuille 15 avec les répétitions A, B et C. Lors du test de 
+variation du SD, le logiciel Influx fonctionnait et trouvait des valeurs de flux. Nous en avons déduit que le taux d'enrichissement était suffisamment robuste pour 
+faire fonctionner le logiciel Influx. Les résultats de flux du logiciel Influx sont similaires à ceux de ScalaFlux. La répétition C avec un subdt de 1 est égale au 
+résultat de ScalaFlux, la répétition A a des valeurs de flux supérieures à partir de subdt 2 et inférieures à subdt 1, tandis que la répétition B a des valeurs de flux 
+inférieures de subdt 1 à subdt 4, puis des valeurs de flux supérieures à partir de subdt 6 à subdt 1000. Pour des données avec des enrichissements faibles, comme les 
+valeurs de l'Aspartate vers la Thréonine, nous n'obtenons pas de valeurs de flux si nous n'utilisons pas un fort subdt (1000).
