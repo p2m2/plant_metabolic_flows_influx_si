@@ -2,6 +2,11 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 
+# Définition de paramètres
+couleurs <- c("FIT" = "blue",
+               "PAS FIT" = "green",
+               "PAS TOURNER" = "yellow")
+
 # Données Glutamate vers Valine 
 
 # Comparaison de l'effet des subdt du fichier d'optimisation
@@ -9,18 +14,18 @@ library(tidyr)
 donnees <- read.table("Variation_subdt_Glu_Val.tsv" , sep = "\t" , header = TRUE , dec = ",")
 head(donnees)
 
-val <- ggplot(donnees, aes(x = log10(sub.dt), y = Valeurs, col = Feuilles)) +
+donnees_modif <- donnees %>%
+  rename(Influx = Valeurs_Influx , Scalaflux = Valeurs_Scalaflux) %>%
+  pivot_longer(cols = c(Influx , Scalaflux) , names_to = "Logiciel" , values_to = "Valeurs")
+
+val <- ggplot(donnees_modif, aes(x = log10(sub.dt),y = Valeurs , col = Logiciel , shape = Feuilles)) +
   geom_point() +
-  geom_hline(aes(yintercept = 18.75296, color = "Scalaflux feuille A"), show.legend = TRUE) +
-  geom_hline(aes(yintercept = 25.82443, color = "Scalaflux feuille B"), show.legend = TRUE) +
-  geom_hline(aes(yintercept = 16.17588, color = "Scalaflux feuille C"), show.legend = TRUE) +
+  geom_line()+
   labs(
     x = "Variation sub dt (log10)",
     y = "Valeurs (nmol/g/poid sec /min)",
-    title = "Comparaison des valeurs entre Influx et Scalaflux avec variation de subdt sur les données Glutamate vers Valine ",
-    subtitle = "Données Glutamate vers Valine")+
-  scale_color_discrete(name = "Logiciel", 
-                     labels = c("Influx feuille A", "Influx feuille B", "Influx feuille C" , "Scalaflux feuille A" , "Scalaflux feuille B" , "Scalaflux feuille C"))
+    title = "Comparaison des valeurs de flux entre Influx et Scalaflux avec un SD de -2 et variation de subdt",
+    subtitle = "Flux Glutamate vers Valine")
 
 val
 
@@ -28,21 +33,34 @@ val
 
 donnees_sd_10 <- read.table("Variation_sd_subdt10_Glu_Val.tsv" , sep = "\t", header = TRUE  , dec = ",")
 head(donnees_sd_10)
-# geom_tile permet de faire une "heatmap" avec ggplot
-val_sd <- ggplot(donnees_sd_10, aes(x = SD, y = Feuilles, fill = Valeurs)) +
-  geom_tile()+
-  labs (title = "Comparaison des valeurs de SD sur le fonctionnement du logiciel Influx avec un subdt de 10",
-        subtitle = "Données Glutamate vers Valine")
-val_sd
+donnees_sd_10$Feuille <- as.numeric(gsub("[^0-9]", "", donnees_sd_10$Feuilles))
+donnees_sd_10$Rep <- gsub("[^A-Za-z]", "", donnees_sd_10$Feuilles)
 
+val_sd <- donnees_sd_10 %>%
+  mutate(Feuilles = factor(Feuilles, levels = unique(Feuilles[order(Feuille)]))) %>%
+  ggplot(aes(x = SD, y = Feuilles, fill = Valeurs)) +
+  geom_tile() +
+  labs(
+    title = "Comparaison des valeurs de SD sur le fonctionnement du logiciel Influx avec un subdt de 10",
+    subtitle = "Flux Glutamate vers Valine"
+  )+
+  scale_fill_manual(values = couleurs)
+
+val_sd
 # Comparaison des sd dans le fichier miso avec subdt 1
 
 donnees_sd_1 <- read.table("Variation_sd_subdt1_Glu_Val.tsv" , sep = "\t" , header = TRUE )
 head(donnees_sd_1)
-val_sd_1 <- ggplot (donnees_sd_1 , aes(x = SD , y = Feuilles , fill = Valeurs)) +
+donnees_sd_1$Feuille <- as.numeric(gsub("[^0-9]", "", donnees_sd_1$Feuilles))
+donnees_sd_1$Rep <- gsub("[^A-Za-z]", "", donnees_sd_1$Feuilles)
+
+val_sd_1 <- donnees_sd_1 %>%
+  mutate(Feuilles = factor(Feuilles, levels = unique(Feuilles[order(Feuille)]))) %>%
+  ggplot(aes(x = SD, y = Feuilles, fill = Valeurs)) +
   geom_tile()+
   labs(title =  "Comparaison des valeurs de SD sur le fonctionnement du logiciel Influx avec un subdt de 1", 
-       subtitle = "Données Glutamate vers Valine")
+       subtitle = "Flux Glutamate vers Valine")+
+  scale_fill_manual(values = couleurs)
 val_sd_1
 
 # Données Aspartate vers Thréonine 
@@ -51,9 +69,15 @@ val_sd_1
 
 donnee <- read.table("Variation_sd_subdt_1000_Asp_Thr.tsv" , sep = "\t" , header = TRUE)
 head(donnee)
+donnee$Feuille <- as.numeric(gsub("[^0-9]", "", donnee$Feuilles))
+donnee$Rep <- gsub("[^A-Za-z]", "", donnee$Feuilles)
 
-thr_subdt_1000 <- ggplot(donnee , aes(x = SD , y = Feuilles , fill = Valeurs))+
+
+thr_subdt_1000 <- donnee %>%
+  mutate(Feuilles = factor(Feuilles, levels = unique(Feuilles[order(Feuille)]))) %>%
+  ggplot(aes(x = SD , y = Feuilles , fill = Valeurs))+
   geom_tile()+
   labs(title = "Comparaison des valeurs de SD sur le fonctionnement du logiciel Influx avec un subdt de 1000",
-       subtitle = "Données Aspartate vers Thréonine")
+       subtitle = "Flux Aspartate vers Thréonine")+
+  scale_fill_manual(values = couleurs)
 thr_subdt_1000
