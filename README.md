@@ -38,6 +38,9 @@ Time(tab)M0(tab)M1
 - .funlab.R : permet de lire le fichier .tsv 
 df=read.table(file.path(dirw,"préfixe.tsv"), header=TRUE)
 
+## Fichiers de sorties 
+
+Les résultats de la modélisation se trouvent tous dans le dossier prefixe_res. Parmi ces fichiers, on trouve un PDF avec les courbes modélisées qui donne une idée des résultats, ainsi qu'un dossier temporaire (tmp) contenant un fichier .kvh avec les résultats. La valeur du flux se trouve dans le fichier .kvh, dans la section "linear stat", sous le nom du flux d'intérêt (.ntew).
 
 
 ## Conseils: 
@@ -48,5 +51,6 @@ Pour plus de détails sur la création des fichiers : https://influx-si.readthed
 
 
 ## Exemple:
-Modélisation des flux du glutamate vers la valine et de l’aspartate vers la thréonine  https://www.mdpi.com/2218-1989/10/4/150
+Modélisation des flux du glutamate vers la valine et de l’aspartate vers la thréonine de l'article https://www.mdpi.com/2218-1989/10/4/150 
+Voir le dossier Données, les résultats sont dans Figures et Résumé.
 
