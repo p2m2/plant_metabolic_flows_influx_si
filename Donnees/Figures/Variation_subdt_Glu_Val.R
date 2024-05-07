@@ -3,9 +3,9 @@ library(dplyr)
 library(tidyr)
 
 # Définition de paramètres
-couleurs <- c("FIT" = "blue",
-               "PAS FIT" = "green",
-               "PAS TOURNER" = "yellow")
+couleurs <- c("Valeur de flux" = "blue",
+               "Valeur de flux nulle ou négative" = "green",
+               "Valeur de flux incalculable" = "yellow")
 
 # Données Glutamate vers Valine 
 
