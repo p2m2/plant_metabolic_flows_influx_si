@@ -52,5 +52,8 @@ Pour plus de détails sur la création des fichiers : https://influx-si.readthed
 
 ## Exemple:
 Modélisation des flux du glutamate vers la valine et de l’aspartate vers la thréonine de l'article https://www.mdpi.com/2218-1989/10/4/150 
-Voir le dossier Données, les résultats sont dans Figures et Résumé.
+Voir le dossier Données, les résultats sont dans le dossier Comparaison_ScalaFlux.
+
+Modélisation des flux de succinate vers le malate de l'article https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2022.885051/full#h10 
+Voir le dossier Données, les résultats sont dans le dossier Test_TCA_13C_GC_MS.
 
