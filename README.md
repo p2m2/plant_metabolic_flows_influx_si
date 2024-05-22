@@ -14,25 +14,25 @@ On s’assure du bon fonctionnement du logiciel en effectuant les tests proposé
 
 
 ## Fichiers d’entrées:
-Pour fonctionner, le logiciel a besoin de plusieurs fichiers d’entrées. Ces fichiers doivent avoir le même préfixe mais aussi ces fichiers possèdent des nomenclatures spécifiques (tabulations et espaces) ,  Si ID et Comment sont vides mettre une tabulation, :
+Pour fonctionner, le logiciel a besoin de plusieurs fichiers d’entrées. Ces fichiers doivent avoir le même préfixe mais aussi ces fichiers possèdent des nomenclatures spécifiques (tabulations et espaces).  Si ID et Comment sont vides mettre une tabulation, il faut aussi faire attention que les titres soient en majuscules:
 
 - .netw : ou network permet d’indiquer au logiciel les voies à modéliser. Le nombre d’atome suivi doit être équilibré.
 nom_flux:(tab)métabolite_entrée (atome_suivi) -> métabolite_sortie (atome_suivi)
 
-- .miso : ou mesures permet d’indiquer les mesures des métabolites de transitions ou de sorties. Species est le métabolite de sortie, Fragment est le nombre d’atome suivi, Dataset est issue de la même analyse de spectrométrie de masse, Isospecies est l’isotopomère, et SD est le pourcentage d’erreur autoriser 
+- .miso : ou mesures permet d’indiquer les mesures des métabolites de transitions ou de sorties. **Species** indique les valeurs du/des métabolites de sortie, **Fragment** indique le nombre d’atome suivi, **Dataset** indique l'analyse de spectrométrie de masse, **Isospecies** indique l’isotopomère, et **SD** (écart-type) indique le pourcentage d’erreur autoriser 
 Id(tab)Comment(tab)Specie(tab)Fragment(tab)Dataset(tab)Isospecies(tab)Value(tab)SD(tab)Time 
 
 - .opt : ou optimisation permet d’indiquer les paramètres d’optimisations pour la modélisation.
 Id(tab)Comment(tab)Name(tab)Value
 
-- .tvar : permet d’indiquer la nature des flux. Name indique le nom du flux (.netw), Kind indique les flux contraint = C, libre = F ou dépendants = D mais aussi les flux net = NET , les flux d’échanges = XCH et la concentrations des espèces METAB avec pour valeur la moyenne d’un pool. 
+- .tvar : permet d’indiquer la nature des flux. **Name** indique le nom du flux (.netw), **Kind** indique les flux *contraint* = C, *libre* = F ou *dépendants* = D mais aussi les flux *net* = NET , les flux *d’échanges* = XCH et la concentrations des espèces *METAB* avec pour valeur la moyenne d’un pool. 
 Id(tab)Comment(tab)Name(tab)Kind(tab)Type(tab)Value
 
-- .linp : permet d’indiquer les mesures des métabolites d’entrée. Value permet de mettre une méthode sur les flux d’entrées par exemple linterp qui permet de mettre une fonction linéaire continue sur les métabolismes d’entrée.
+- .linp : permet d’indiquer les mesures des métabolites d’entrée. **Value** permet de mettre une méthode sur les flux d’entrées par exemple linterp qui permet de mettre une fonction linéaire continue sur les métabolismes d’entrée.
 Id(tab)Metabolite(tab)Isotopomer(tab)Value(tab)Comment
 Lorsque le .linp utilise une méthode de lecture, il faut créer d’autre fichier : 
 
-- .tsv : permet d’indiquer les mesures de métabolites d’entrées. M0 et M1 sont les isotopomères.
+- .tsv : permet d’indiquer les mesures de métabolites d’entrées. **M0** et **M1** sont les isotopomères.
 Time(tab)M0(tab)M1
 
 - .funlab.R : permet de lire le fichier .tsv 
@@ -44,7 +44,7 @@ Les résultats de la modélisation se trouvent tous dans le dossier prefixe_res.
 
 
 ## Conseils: 
-Pour vérifier si la nomenclature des fichiers on peut utiliser notepad avec l option Affichage/Symbole spéciaux/Afficher les espaces et tabulations. Cela permet une meilleur visibilité des espaces et tabulations qui sont primordiales pour la bonne lecture des différents fichiers.
+Pour vérifier si la nomenclature des fichiers on peut utiliser notepad avec l'option Affichage/Symbole spéciaux/Afficher les espaces et tabulations. Cela permet une meilleur visibilité des espaces et tabulations qui sont primordiales pour la bonne lecture des différents fichiers.
 Quand les données d'enrichissement sont trop faibles et que les mesures ne sont pas assez nombreuses il faut modifier les paramètres d’optimisation (.opt) comme le subdt ou les paramètres de mesures (.miso) comme le sd.
 Pour plus de détails sur la création des fichiers : https://influx-si.readthedocs.io/en/latest/index.html
 
