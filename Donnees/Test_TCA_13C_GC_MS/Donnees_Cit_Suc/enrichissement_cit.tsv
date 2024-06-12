@@ -1,0 +1,9 @@
+condition	replicat	M0_t0_cit	M0_t360_cit	M0_t0_suc	M0_t360_suc	M0_t0_glu	M0_t360_glu	pourcentage_enri_cit	pourcentage_enri_suc	pourcentage_enri_glu	difference_enri _(cit - suc)	difference_enri_(cit - glu)
+light	A	99	89	100	70	100	76	10	30	24	-20	-14
+light	B	97	91	99	61	99	75	6	38	24	-32	-18
+light	C	98	94	100	74	100	79	4	26	21	-22	-17
+light	D	100	96	98	74	100	81	4	24	19	-20	-15
+dark	A	99	87	100	75	100	76	12	25	24	-13	-12
+dark	B	97	89	99	73	99	73	8	26	26	-18	-18
+dark	C	98	95	100	79	100	79	3	21	21	-18	-18
+dark	D	100	93	98	77	100	78	7	21	22	-14	-15
