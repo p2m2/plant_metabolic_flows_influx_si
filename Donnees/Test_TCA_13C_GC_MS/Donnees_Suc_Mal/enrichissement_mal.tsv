@@ -1,0 +1,9 @@
+condition	replicat	M0_t0_suc	M0_t120_suc	M0_t0_mal	M0_t120_mal	pourcentage_enri_suc	pourcentage_enri_mal	difference_enri
+light	A	100	70	98	83	30	15	15
+light	B	99	72	100	87	27	13	14
+light	C	100	73	100	89	27	11	16
+light	D	98	74	98	90	24	8	16
+dark	A	100	74	98	86	26	12	14
+dark	B	99	73	100	87	26	13	13
+dark	C	99	79	99	89	20	10	10
+dark	D	98	77	98	93	21	5	16
