@@ -15,9 +15,9 @@ figure <- ggplot (donnees , aes (x = feuilles , y = difference_enri , fill = rep
   theme(
     plot.title = element_text(size = 20),      
     plot.subtitle = element_text(size = 18),
-    axis.title = element_text(size = 20),    
-    axis.text = element_text(size = 20),
-    legend.title = element_text(size = 20),           
-    legend.text = element_text(size = 20) 
+    axis.title = element_text(size = 30),    
+    axis.text = element_text(size = 30),
+    legend.title = element_text(size = 30),           
+    legend.text = element_text(size = 30)
   )
 figure
